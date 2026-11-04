@@ -2,30 +2,31 @@
    DO'A 6 EXECUTIVE CAMPING RETREAT 2026
    Tema: Gagah, Berwibawa, Prestisius & Modern Luxury Outdoor
    Edisi Kehormatan Keluarga Besar Bengkel Las Do'a 6 (Sarjana Edition)
+   FULL RESPONSIVE ENGINE (Mobile, Tablet, Desktop, Wide Screen & Landscape)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
   /* Dark Luxury Obsidian & Emerald Palette */
-  --bg-dark: #0a110e;
-  --bg-surface: #101a16;
-  --bg-card: #15221d;
-  --bg-card-hover: #1b2c25;
+  --bg-dark: #08100d;
+  --bg-surface: #0e1b16;
+  --bg-card: #13241d;
+  --bg-card-hover: #192e25;
   
   /* Metallic & Gold Accents */
   --gold-primary: #d4af37;
   --gold-bright: #f3cf65;
   --gold-dark: #aa8522;
   --gold-gradient: linear-gradient(135deg, #f6d365 0%, #d4af37 50%, #99701a 100%);
-  --gold-border: rgba(212, 175, 55, 0.35);
-  --gold-glow: 0 0 25px rgba(212, 175, 55, 0.22);
+  --gold-border: rgba(212, 175, 55, 0.32);
+  --gold-glow: 0 0 25px rgba(212, 175, 55, 0.2);
   
   /* Industrial Steel & Bronze */
   --steel-light: #e2e8f0;
   --steel-muted: #94a3b8;
   --bronze: #c27d38;
-  --forest-deep: #0d271f;
+  --forest-deep: #0a1f18;
   
   /* Typography */
   --font-honor: 'Cinzel', serif;
@@ -33,13 +34,15 @@
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'Space Grotesk', monospace;
   
-  --radius-lg: 20px;
+  --radius-lg: 22px;
   --radius-md: 14px;
   --radius-sm: 8px;
 }
 
-/* Base Styles */
-* {
+/* ==========================================================================
+   GLOBAL RESET & FLUID FOUNDATION
+   ========================================================================== */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -47,15 +50,21 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--font-body);
   background-color: var(--bg-dark);
   color: var(--steel-light);
-  line-height: 1.7;
+  line-height: 1.68;
   overflow-x: hidden;
   position: relative;
+  width: 100%;
+  min-height: 100vh;
+  /* Ruang aman dasar untuk dock mengambang di bawah */
+  padding-bottom: 84px;
 }
 
 /* Subtle Geometric Pattern Background */
@@ -65,18 +74,25 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image: 
-    radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px),
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 36px 36px, 72px 72px, 72px 72px;
+    radial-gradient(rgba(212, 175, 55, 0.07) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 32px 32px, 64px 64px, 64px 64px;
   z-index: -1;
+}
+
+img, svg, iframe {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
 h1, h2, h3, h4, h5, .font-title {
   font-family: var(--font-heading);
   font-weight: 700;
   color: #ffffff;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
+  word-wrap: break-word;
 }
 
 .font-honor {
@@ -95,6 +111,23 @@ h1, h2, h3, h4, h5, .font-title {
   display: inline-block;
 }
 
+/* Container safety across all devices */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding-right: 1.25rem;
+  padding-left: 1.25rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 575.98px) {
+  .container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
 /* ==========================================================================
    1. COVER OVERLAY: VIP SEAL & HONORARY INVITATION
    ========================================================================== */
@@ -106,8 +139,9 @@ h1, h2, h3, h4, h5, .font-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1rem;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   transition: transform 0.85s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.75s ease;
 }
 
@@ -139,180 +173,206 @@ h1, h2, h3, h4, h5, .font-title {
 
 .cover-executive-card {
   position: relative;
-  max-width: 540px;
+  max-width: 520px;
   width: 100%;
-  background: rgba(16, 26, 22, 0.88);
+  background: rgba(14, 25, 20, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1.5px solid var(--gold-border);
-  border-radius: 28px;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75), var(--gold-glow);
-  padding: 3rem 2.25rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), var(--gold-glow);
+  padding: clamp(1.75rem, 5vw, 2.75rem) clamp(1.15rem, 4vw, 2rem);
   text-align: center;
   overflow: hidden;
-  animation: executiveFloat 5s ease-in-out infinite alternate;
-}
-
-@keyframes executiveFloat {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-8px); }
+  margin: auto;
 }
 
 /* Gold Corner Accents */
 .cover-executive-card::before, .cover-executive-card::after {
   content: "";
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   border-color: var(--gold-primary);
   pointer-events: none;
 }
 .cover-executive-card::before {
-  top: 16px;
-  left: 16px;
+  top: 12px;
+  left: 12px;
   border-top: 2px solid;
   border-left: 2px solid;
 }
 .cover-executive-card::after {
-  bottom: 16px;
-  right: 16px;
+  bottom: 12px;
+  right: 12px;
   border-bottom: 2px solid;
   border-right: 2px solid;
 }
 
-/* Crest Emblem */
 .crest-emblem-box {
-  width: 90px;
-  height: 90px;
-  margin: 0 auto 1.5rem;
+  width: clamp(64px, 15vw, 82px);
+  height: clamp(64px, 15vw, 82px);
+  margin: 0 auto 1.15rem;
   border: 2px solid var(--gold-primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle, #213d31 0%, #0d1a14 100%);
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.35);
-  position: relative;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
 }
 
 .crest-monogram {
   font-family: var(--font-honor);
-  font-size: 1.8rem;
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
   font-weight: 800;
   color: var(--gold-bright);
-  letter-spacing: 1px;
 }
 
 .cover-badge-honor {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: rgba(212, 175, 55, 0.12);
   border: 1px solid var(--gold-border);
   color: var(--gold-bright);
   font-family: var(--font-honor);
-  font-size: 0.76rem;
+  font-size: clamp(0.68rem, 2vw, 0.75rem);
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 6px 18px;
+  padding: 5px 14px;
   border-radius: 50px;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
+  max-width: 100%;
 }
 
 .cover-exec-title {
   font-family: var(--font-honor);
-  font-size: 2.15rem;
+  font-size: clamp(1.45rem, 5vw, 1.95rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
   color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
 .cover-exec-sub {
-  font-size: 0.92rem;
+  font-size: clamp(0.82rem, 2.5vw, 0.9rem);
   color: var(--steel-muted);
   max-width: 440px;
-  margin: 0 auto 1.75rem;
-  font-weight: 400;
+  margin: 0 auto 1.35rem;
+  line-height: 1.6;
 }
 
 .cover-guest-vip {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(212, 175, 55, 0.25);
-  border-radius: 16px;
-  padding: 1.25rem;
-  margin-bottom: 2rem;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .cover-guest-role {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--gold-primary);
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   margin-bottom: 4px;
 }
 
 .cover-guest-name {
   font-family: var(--font-heading);
-  font-size: 1.65rem;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
   font-weight: 700;
   color: #ffffff;
+  word-break: break-word;
 }
 
 .btn-open-executive {
   background: var(--gold-gradient);
   color: #0b1411;
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: clamp(0.92rem, 2.5vw, 1.05rem);
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
-  padding: 15px 36px;
+  padding: 13px 24px;
   border-radius: 50px;
   border: none;
   box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.25s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   cursor: pointer;
   width: 100%;
+  min-height: 48px;
 }
 
 .btn-open-executive:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.6);
   color: #000;
 }
 
+/* Landscape Mode for Cover (Short Height Devices) */
+@media (max-height: 540px) {
+  #invitation-cover {
+    padding: 0.5rem;
+    align-items: flex-start;
+  }
+  .cover-executive-card {
+    padding: 1.25rem 1rem;
+    margin: 1rem auto;
+  }
+  .crest-emblem-box {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+  }
+  .cover-exec-title {
+    font-size: 1.25rem;
+  }
+  .cover-exec-sub {
+    margin-bottom: 0.75rem;
+    font-size: 0.78rem;
+  }
+  .cover-guest-vip {
+    padding: 0.65rem;
+    margin-bottom: 0.85rem;
+  }
+  .btn-open-executive {
+    padding: 10px 20px;
+  }
+}
+
 /* ==========================================================================
-   FLOATING MUSIC & DOCK
+   FLOATING CONTROLS: AUDIO & QUICK DOCK (MOBILE ADAPTIVE)
    ========================================================================== */
 .floating-music-btn {
   position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 54px;
-  height: 54px;
+  bottom: 84px;
+  right: 18px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: var(--bg-card);
   border: 1.5px solid var(--gold-primary);
   color: var(--gold-bright);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), var(--gold-glow);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), var(--gold-glow);
   z-index: 999;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
 .floating-music-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
   background: var(--gold-primary);
   color: #0a110e;
 }
@@ -327,48 +387,53 @@ h1, h2, h3, h4, h5, .font-title {
 
 .quick-dock-bar {
   position: fixed;
-  bottom: 24px;
+  bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(16, 26, 22, 0.92);
+  background: rgba(14, 25, 20, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--gold-border);
   border-radius: 50px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  padding: 6px 12px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+  padding: 6px 10px;
   display: flex;
   align-items: center;
+  justify-content: space-around;
   gap: 4px;
   z-index: 998;
+  width: auto;
+  max-width: 95vw;
 }
 
 .quick-dock-item {
   color: var(--steel-muted);
   font-family: var(--font-heading);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 8px 14px;
   border-radius: 50px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  transition: all 0.25s ease;
+  min-height: 42px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .quick-dock-item:hover, .quick-dock-item.active {
-  background: rgba(212, 175, 55, 0.15);
+  background: rgba(212, 175, 55, 0.16);
   color: var(--gold-bright);
 }
 
 /* ==========================================================================
-   2. HERO SECTION: GAGAH, BERWIBAWA & BERKELAS
+   2. HERO SECTION
    ========================================================================== */
 .hero-exec {
   position: relative;
-  padding: 5rem 0 4rem;
-  min-height: 85vh;
+  padding: clamp(3rem, 7vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
   display: flex;
   align-items: center;
 }
@@ -376,26 +441,29 @@ h1, h2, h3, h4, h5, .font-title {
 .hero-pill-honor {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: rgba(212, 175, 55, 0.1);
   border: 1px solid var(--gold-border);
-  padding: 7px 20px;
+  padding: 6px 18px;
   border-radius: 50px;
   font-family: var(--font-honor);
-  font-size: 0.82rem;
+  font-size: clamp(0.68rem, 2vw, 0.78rem);
   color: var(--gold-bright);
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
+  max-width: 100%;
 }
 
 .hero-main-title {
   font-family: var(--font-honor);
-  font-size: 3.4rem;
+  font-size: clamp(1.85rem, 5vw, 3.4rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.18;
   color: #ffffff;
   margin-bottom: 1rem;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .hero-main-title span {
@@ -403,12 +471,11 @@ h1, h2, h3, h4, h5, .font-title {
 }
 
 .hero-manifesto {
-  font-size: 1.18rem;
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
   color: #cbd5e1;
   max-width: 620px;
-  line-height: 1.8;
-  margin-bottom: 2rem;
-  font-weight: 400;
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
 }
 
 .hero-manifesto-highlight {
@@ -416,45 +483,44 @@ h1, h2, h3, h4, h5, .font-title {
   color: var(--gold-bright);
   font-weight: 600;
   margin-top: 0.75rem;
-  font-size: 1.15rem;
+  font-size: clamp(0.92rem, 2vw, 1.05rem);
   border-left: 3px solid var(--gold-primary);
-  padding-left: 14px;
+  padding-left: 12px;
 }
 
-/* Dignified Personalized Greeting */
 .hero-greeting-box {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--gold-border);
   border-radius: var(--radius-md);
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 2rem;
+  padding: clamp(0.85rem, 2.5vw, 1.15rem) clamp(1rem, 3vw, 1.25rem);
+  margin-bottom: 1.75rem;
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .hero-greeting-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: rgba(212, 175, 55, 0.15);
+  width: clamp(40px, 10vw, 48px);
+  height: clamp(40px, 10vw, 48px);
+  border-radius: 12px;
+  background: rgba(212, 175, 55, 0.14);
   border: 1px solid var(--gold-border);
   color: var(--gold-bright);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 3vw, 1.45rem);
   flex-shrink: 0;
 }
 
-/* COUNTDOWN: GAGAH & PRECISION TIMEPIECE */
+/* COUNTDOWN CARD: FLUID & NEVER WRAPPING */
 .countdown-exec-card {
   background: var(--bg-surface);
   border: 1px solid var(--gold-border);
   border-radius: var(--radius-lg);
-  padding: 1.75rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-  margin-bottom: 2.25rem;
+  margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
 }
@@ -472,26 +538,22 @@ h1, h2, h3, h4, h5, .font-title {
 .countdown-exec-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: clamp(4px, 1.5vw, 10px);
 }
 
 .countdown-exec-box {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
-  padding: 1.25rem 0.5rem;
+  padding: clamp(0.7rem, 2vw, 1.1rem) clamp(0.2rem, 1vw, 0.4rem);
   text-align: center;
   transition: all 0.25s ease;
-}
-
-.countdown-exec-box:hover {
-  border-color: var(--gold-primary);
-  transform: translateY(-3px);
+  min-width: 0; /* Mencegah overflow flex/grid */
 }
 
 .countdown-digit {
   font-family: var(--font-mono);
-  font-size: 2.5rem;
+  font-size: clamp(1.35rem, 4vw, 2.4rem);
   font-weight: 700;
   line-height: 1;
   color: #ffffff;
@@ -500,15 +562,28 @@ h1, h2, h3, h4, h5, .font-title {
 
 .countdown-tag {
   font-family: var(--font-honor);
-  font-size: 0.72rem;
-  letter-spacing: 2px;
+  font-size: clamp(0.6rem, 1.5vw, 0.68rem);
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--gold-primary);
-  margin-top: 6px;
+  margin-top: 5px;
   display: block;
 }
 
-/* HERO POSTER: COMMANDING & ELEGANT */
+.hero-action-btns {
+  width: 100%;
+}
+@media (max-width: 575.98px) {
+  .hero-action-btns {
+    flex-direction: column;
+  }
+  .hero-action-btns .btn-exec-primary,
+  .hero-action-btns button {
+    width: 100% !important;
+  }
+}
+
+/* HERO VISUAL POSTER */
 .hero-exec-visual {
   position: relative;
 }
@@ -517,14 +592,14 @@ h1, h2, h3, h4, h5, .font-title {
   position: relative;
   background: var(--bg-card);
   border: 1.5px solid var(--gold-border);
-  border-radius: 24px;
-  padding: 12px;
+  border-radius: 22px;
+  padding: 10px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), var(--gold-glow);
 }
 
 .hero-exec-img {
   width: 100%;
-  height: 460px;
+  height: clamp(260px, 45vw, 440px);
   object-fit: cover;
   border-radius: 16px;
   filter: brightness(0.92) contrast(1.08);
@@ -532,35 +607,35 @@ h1, h2, h3, h4, h5, .font-title {
 
 .hero-exec-overlay-tag {
   position: absolute;
-  bottom: 28px;
-  left: 28px;
-  right: 28px;
-  background: rgba(10, 17, 14, 0.85);
+  bottom: clamp(14px, 3vw, 24px);
+  left: clamp(14px, 3vw, 24px);
+  right: clamp(14px, 3vw, 24px);
+  background: rgba(10, 17, 14, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--gold-border);
-  border-radius: 16px;
-  padding: 1.25rem;
+  border-radius: 14px;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.25rem);
 }
 
 /* ==========================================================================
-   3. MINI GAME: PERAN KEHORMATAN DI PACET (SMART & FUN)
+   3. MINI GAME: PERAN KEHORMATAN
    ========================================================================== */
 .role-exec-section {
   background: var(--bg-surface);
   border: 1px solid var(--gold-border);
   border-radius: var(--radius-lg);
-  padding: 3rem 2.5rem;
+  padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1.15rem, 3.5vw, 2rem);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 .role-result-display {
   background: rgba(0, 0, 0, 0.45);
   border: 1px dashed var(--gold-border);
-  border-radius: 18px;
-  padding: 2.25rem 2rem;
+  border-radius: 16px;
+  padding: clamp(1.5rem, 3.5vw, 2rem) clamp(1rem, 2.5vw, 1.5rem);
   text-align: center;
-  min-height: 190px;
+  min-height: 175px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -568,20 +643,14 @@ h1, h2, h3, h4, h5, .font-title {
 }
 
 .role-icon-lg {
-  font-size: 3.5rem;
+  font-size: clamp(2.6rem, 6vw, 3.2rem);
   line-height: 1;
-  margin-bottom: 12px;
-  animation: popInRole 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes popInRole {
-  0% { transform: scale(0.5); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  margin-bottom: 10px;
 }
 
 .role-title-lg {
   font-family: var(--font-honor);
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 3vw, 1.45rem);
   font-weight: 800;
   color: var(--gold-bright);
   letter-spacing: 1px;
@@ -589,21 +658,21 @@ h1, h2, h3, h4, h5, .font-title {
 }
 
 .role-desc-lg {
-  font-size: 0.98rem;
+  font-size: clamp(0.86rem, 2vw, 0.94rem);
   color: var(--steel-muted);
-  max-width: 500px;
+  max-width: 480px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
 /* ==========================================================================
-   4. PILAR KEGIATAN: DIGNIFIED & EXCLUSIVE
+   4. PILAR KEGIATAN
    ========================================================================== */
 .card-pillar-exec {
   background: var(--bg-surface);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
-  padding: 2.25rem 2rem;
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 2.5vw, 1.75rem);
   height: 100%;
   transition: all 0.3s ease;
   position: relative;
@@ -611,78 +680,55 @@ h1, h2, h3, h4, h5, .font-title {
 }
 
 .card-pillar-exec:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: var(--gold-border);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
   background: var(--bg-card);
 }
 
-.card-pillar-exec::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: var(--gold-gradient);
-  transition: width 0.35s ease;
-}
-
-.card-pillar-exec:hover::after {
-  width: 100%;
-}
-
 .pillar-icon-box {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
+  width: clamp(48px, 10vw, 58px);
+  height: clamp(48px, 10vw, 58px);
+  border-radius: 14px;
   background: rgba(212, 175, 55, 0.1);
   border: 1px solid var(--gold-border);
   color: var(--gold-bright);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.card-pillar-exec:hover .pillar-icon-box {
-  transform: scale(1.08);
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+  font-size: clamp(1.5rem, 3.5vw, 1.8rem);
+  margin-bottom: 1.25rem;
 }
 
 .pillar-title {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.25rem);
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.65rem;
 }
 
 .pillar-desc {
-  font-size: 0.95rem;
+  font-size: clamp(0.86rem, 2vw, 0.92rem);
   color: var(--steel-muted);
-  line-height: 1.65;
+  line-height: 1.6;
   margin: 0;
 }
 
 /* ==========================================================================
-   5. LOKASI & DETAIL: EXECUTIVE RETREAT
+   5. LOKASI RETREAT & MAPS
    ========================================================================== */
 .location-card-exec {
   background: var(--bg-surface);
   border: 1px solid var(--gold-border);
   border-radius: var(--radius-lg);
-  padding: 2.25rem;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  padding: clamp(1.4rem, 3vw, 2rem) clamp(1.15rem, 2.5vw, 1.75rem);
 }
 
 .location-exec-row {
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
-  padding: 1.25rem 0;
+  gap: clamp(0.85rem, 2vw, 1.15rem);
+  padding: clamp(0.9rem, 2vw, 1.15rem) 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -692,8 +738,8 @@ h1, h2, h3, h4, h5, .font-title {
 }
 
 .location-exec-icon {
-  width: 48px;
-  height: 48px;
+  width: clamp(38px, 9vw, 44px);
+  height: clamp(38px, 9vw, 44px);
   border-radius: 12px;
   background: rgba(212, 175, 55, 0.12);
   border: 1px solid var(--gold-border);
@@ -701,7 +747,7 @@ h1, h2, h3, h4, h5, .font-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
   flex-shrink: 0;
 }
 
@@ -715,13 +761,15 @@ h1, h2, h3, h4, h5, .font-title {
 
 .map-frame-exec iframe {
   width: 100%;
-  height: 380px;
+  aspect-ratio: 16 / 9;
+  min-height: 250px;
+  max-height: 380px;
   border: none;
   display: block;
 }
 
 .map-footer-exec {
-  padding: 1.25rem 1.5rem;
+  padding: clamp(0.9rem, 2vw, 1.15rem) 1.25rem;
   background: var(--bg-card);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
@@ -732,19 +780,25 @@ h1, h2, h3, h4, h5, .font-title {
 }
 
 /* ==========================================================================
-   6. RUNDOWN: MASTER AGENDA
+   6. RUNDOWN MASTER AGENDA
    ========================================================================== */
+.nav-pills-exec {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
 .nav-pills-exec .nav-link {
   font-family: var(--font-honor);
-  font-size: 0.95rem;
-  letter-spacing: 1.5px;
+  font-size: clamp(0.78rem, 2vw, 0.9rem);
+  letter-spacing: 1px;
   color: var(--steel-muted);
   background: var(--bg-surface);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 50px;
-  padding: 12px 28px;
-  margin: 0 8px;
+  padding: 10px 22px;
   transition: all 0.25s ease;
+  min-height: 44px;
 }
 
 .nav-pills-exec .nav-link.active {
@@ -757,25 +811,24 @@ h1, h2, h3, h4, h5, .font-title {
 
 .timeline-exec-list {
   max-width: 820px;
-  margin: 2.5rem auto 0;
+  margin: 2.25rem auto 0;
 }
 
 .timeline-exec-item {
   display: flex;
   align-items: flex-start;
-  gap: 1.5rem;
-  margin-bottom: 1.75rem;
-  position: relative;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .timeline-exec-time {
-  width: 130px;
+  width: 125px;
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid var(--gold-border);
   border-radius: 12px;
-  padding: 10px 12px;
+  padding: 8px 10px;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--gold-bright);
   text-align: center;
@@ -786,37 +839,36 @@ h1, h2, h3, h4, h5, .font-title {
   flex-grow: 1;
   background: var(--bg-surface);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 1.25rem 1.75rem;
+  border-radius: 14px;
+  padding: 1.15rem 1.4rem;
   transition: all 0.25s ease;
 }
 
 .timeline-exec-card:hover {
   border-color: var(--gold-border);
-  transform: translateX(6px);
+  transform: translateX(4px);
 }
 
 /* ==========================================================================
-   7. CHECKLIST: EXECUTIVE EXPEDITION
+   7. CHECKLIST EXPEDITION
    ========================================================================== */
 .checklist-exec-card {
   background: var(--bg-surface);
   border: 1px solid var(--gold-border);
   border-radius: var(--radius-lg);
-  padding: 2.25rem;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  padding: clamp(1.4rem, 3vw, 2rem) clamp(1.15rem, 2.5vw, 1.75rem);
 }
 
 .checklist-exec-strip {
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 1.25rem;
-  margin-bottom: 1.75rem;
+  border-radius: 12px;
+  padding: 1.15rem;
+  margin-bottom: 1.5rem;
 }
 
 .exec-progress-bar-bg {
-  height: 12px;
+  height: 10px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
@@ -834,17 +886,17 @@ h1, h2, h3, h4, h5, .font-title {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  padding: 12px 18px;
-  margin-bottom: 10px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
   cursor: pointer;
   user-select: none;
-  transition: all 0.25s ease;
+  min-height: 48px;
+  transition: all 0.2s ease;
 }
 
 .checklist-exec-item:hover {
   background: rgba(212, 175, 55, 0.08);
   border-color: var(--gold-border);
-  transform: translateX(4px);
 }
 
 .checklist-exec-item.done {
@@ -859,12 +911,10 @@ h1, h2, h3, h4, h5, .font-title {
   height: 24px;
   border: 1.5px solid var(--gold-primary);
   border-radius: 6px;
-  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 14px;
-  font-weight: 800;
+  margin-right: 12px;
   flex-shrink: 0;
 }
 
@@ -874,17 +924,19 @@ h1, h2, h3, h4, h5, .font-title {
 }
 
 /* ==========================================================================
-   8. RSVP & GUESTBOOK
+   8. RSVP & DINDING UCAPAN (BERSIH DARI DUMMY)
    ========================================================================== */
 .form-exec-control, .form-exec-select {
   border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: 12px 14px;
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 16px; /* Mencegah auto-zoom iOS Safari */
   background: rgba(0, 0, 0, 0.4);
   color: #ffffff;
+  min-height: 48px;
   transition: all 0.25s ease;
+  width: 100%;
 }
 
 .form-exec-control:focus, .form-exec-select:focus {
@@ -896,7 +948,7 @@ h1, h2, h3, h4, h5, .font-title {
 }
 
 .form-exec-select option {
-  background: #101a16;
+  background: #0f1c17;
   color: #fff;
 }
 
@@ -904,9 +956,9 @@ h1, h2, h3, h4, h5, .font-title {
   background: var(--gold-gradient);
   color: #0b1411;
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: clamp(0.92rem, 2.5vw, 1.05rem);
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   padding: 14px 28px;
   border-radius: 50px;
@@ -918,6 +970,9 @@ h1, h2, h3, h4, h5, .font-title {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  min-height: 48px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .btn-exec-primary:hover {
@@ -927,87 +982,172 @@ h1, h2, h3, h4, h5, .font-title {
 }
 
 .guestbook-exec-stream {
-  max-height: 540px;
+  max-height: 520px;
   overflow-y: auto;
-  padding-right: 6px;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 4px;
 }
 
 .guestbook-exec-card {
   background: var(--bg-surface);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1rem;
-  transition: border-color 0.2s ease;
+  border-radius: 14px;
+  padding: 1.15rem 1.25rem;
+  margin-bottom: 0.85rem;
+  animation: slideInDown 0.3s ease;
 }
 
-.guestbook-exec-card:hover {
-  border-color: var(--gold-border);
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .guest-pill-exec {
   font-family: var(--font-honor);
   font-size: 0.72rem;
   letter-spacing: 1px;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .pill-hadir { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); }
 .pill-ragu  { background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.4); }
 .pill-tidak { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
 
+.guestbook-empty-state {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1.5px dashed var(--gold-border);
+  border-radius: 16px;
+}
+
 /* ==========================================================================
    9. FOOTER
    ========================================================================== */
 .footer-exec {
-  background: #060b09;
+  background: #050a08;
   border-top: 1px solid var(--gold-border);
-  padding: 4.5rem 0 2.5rem;
+  padding: 4rem 0 2rem;
   color: var(--steel-muted);
 }
 
-/* Responsiveness */
+/* ==========================================================================
+   10. MEDIA QUERIES (ADAPTIF SEMUA UKURAN PERANGKAT)
+   ========================================================================== */
+
+/* Tablet & iPad (768px - 991px) */
 @media (max-width: 991.98px) {
-  .hero-main-title {
-    font-size: 2.75rem;
+  .hero-exec {
+    padding: 3.5rem 0 2.5rem;
   }
   .hero-exec-img {
-    height: 360px;
+    height: 340px;
+  }
+  .quick-dock-bar {
+    max-width: 90vw;
   }
 }
 
+/* Mobile & Small Tablet (< 768px) */
 @media (max-width: 767.98px) {
-  .hero-main-title {
-    font-size: 2.15rem;
+  body {
+    padding-bottom: 76px;
   }
-  .countdown-digit {
-    font-size: 1.85rem;
-  }
+
+  /* Cover on mobile */
   .cover-executive-card {
-    padding: 2.25rem 1.25rem;
+    padding: 1.75rem 1.15rem;
+    border-radius: 20px;
   }
-  .cover-exec-title {
-    font-size: 1.7rem;
+
+  /* Hero Section on Mobile */
+  .hero-exec {
+    padding: 2.75rem 0 2rem;
   }
+  .hero-exec-img {
+    height: 260px;
+  }
+  .hero-exec-overlay-tag {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    padding: 0.75rem;
+  }
+
+  /* Rundown on Mobile: Stack neatly */
+  .nav-pills-exec {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .nav-pills-exec .nav-link {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+  }
+  .timeline-exec-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .timeline-exec-time {
+    width: 100%;
+    text-align: left;
+    padding: 6px 12px;
+  }
+
+  /* Location on Mobile */
+  .map-footer-exec {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Quick Dock & Music on Mobile: perfectly spaced */
   .quick-dock-bar {
-    width: 94%;
-    justify-content: space-around;
-    padding: 6px 4px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+    max-width: 440px;
+    padding: 5px 4px;
+    gap: 2px;
+    justify-content: space-between;
   }
   .quick-dock-item {
-    padding: 6px 10px;
-    font-size: 0.78rem;
+    flex: 1;
+    padding: 6px 4px;
+    font-size: 0.75rem;
+    min-height: 40px;
+    min-width: 38px;
   }
   .quick-dock-item span {
     display: none;
   }
-  .timeline-exec-item {
-    flex-direction: column;
-    gap: 0.6rem;
+  .quick-dock-item i {
+    font-size: 1.18rem;
   }
-  .timeline-exec-time {
-    width: auto;
-    display: inline-block;
+
+  .floating-music-btn {
+    bottom: 70px;
+    right: 14px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Extra Small Mobile (<= 390px) */
+@media (max-width: 390px) {
+  .hero-main-title {
+    font-size: 1.65rem;
+  }
+  .countdown-digit {
+    font-size: 1.25rem;
+  }
+  .countdown-tag {
+    font-size: 0.56rem;
+  }
+  .cover-exec-title {
+    font-size: 1.35rem;
+  }
+  .quick-dock-item i {
+    font-size: 1.05rem;
   }
 }

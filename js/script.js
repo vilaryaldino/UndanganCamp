@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. Interactive Expedition Checklist
   initChecklist();
 
-  // 7. RSVP & Live Dinding Ucapan Kehormatan
+  // 7. RSVP & Live Dinding Ucapan Kehormatan (Bersih dari dummy)
   initRSVP();
 
   // 8. Salin Alamat & Simpan ke Kalender
@@ -58,13 +58,13 @@ function generateStars() {
   const container = document.getElementById('night-stars');
   if (!container) return;
 
-  const count = 45;
+  const count = 40;
   for (let i = 0; i < count; i++) {
     const star = document.createElement('div');
     star.className = 'night-star';
     star.style.top = `${Math.random() * 100}%`;
     star.style.left = `${Math.random() * 100}%`;
-    const sz = Math.random() * 3 + 1.5;
+    const sz = Math.random() * 2.5 + 1.2;
     star.style.width = `${sz}px`;
     star.style.height = `${sz}px`;
     star.style.animationDelay = `${Math.random() * 3}s`;
@@ -108,7 +108,7 @@ function initAudioAndCover() {
 function fireGoldConfetti() {
   if (typeof confetti === 'function') {
     confetti({
-      particleCount: 80,
+      particleCount: 70,
       spread: 70,
       origin: { y: 0.6 },
       colors: ['#d4af37', '#f3cf65', '#ffffff', '#2a9d8f']
@@ -116,16 +116,16 @@ function fireGoldConfetti() {
 
     setTimeout(() => {
       confetti({
-        particleCount: 50,
+        particleCount: 40,
         angle: 60,
-        spread: 60,
+        spread: 55,
         origin: { x: 0 },
         colors: ['#d4af37', '#f6d365', '#ffffff']
       });
       confetti({
-        particleCount: 50,
+        particleCount: 40,
         angle: 120,
-        spread: 60,
+        spread: 55,
         origin: { x: 1 },
         colors: ['#d4af37', '#f6d365', '#ffffff']
       });
@@ -303,7 +303,7 @@ function initRoleRandomizer() {
 
   btnRoll.addEventListener('click', () => {
     btnRoll.disabled = true;
-    btnRoll.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Mengalkulasi Takdir...';
+    btnRoll.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Mengalkulasi...';
 
     let count = 0;
     const interval = setInterval(() => {
@@ -323,14 +323,14 @@ function initRoleRandomizer() {
 
         if (typeof confetti === 'function') {
           confetti({
-            particleCount: 45,
-            spread: 65,
+            particleCount: 40,
+            spread: 60,
             origin: { y: 0.7 },
             colors: ['#d4af37', '#f3cf65', '#ffffff']
           });
         }
       }
-    }, 120);
+    }, 110);
   });
 }
 
@@ -354,7 +354,7 @@ function initChecklist() {
   const textEl = document.getElementById('fest-checklist-progress-text');
   if (!listEl) return;
 
-  let items = JSON.parse(localStorage.getItem('doa6_exec_checklist_v3')) || DEFAULT_CHECKLIST;
+  let items = JSON.parse(localStorage.getItem('doa6_exec_checklist_clean')) || DEFAULT_CHECKLIST;
 
   function render() {
     listEl.innerHTML = '';
@@ -374,13 +374,13 @@ function initChecklist() {
 
       div.addEventListener('click', () => {
         items[index].checked = !items[index].checked;
-        localStorage.setItem('doa6_exec_checklist_v3', JSON.stringify(items));
+        localStorage.setItem('doa6_exec_checklist_clean', JSON.stringify(items));
         render();
 
         if (items.every(i => i.checked) && typeof confetti === 'function') {
           confetti({
-            particleCount: 70,
-            spread: 80,
+            particleCount: 60,
+            spread: 75,
             colors: ['#d4af37', '#ffffff']
           });
         }
@@ -398,39 +398,8 @@ function initChecklist() {
 }
 
 /* -------------------------------------------------------------
- * 7. RSVP & Live Guestbook Kehormatan
+ * 7. RSVP & Live Guestbook Kehormatan (BERSIH DARI DUMMY)
  * ----------------------------------------------------------- */
-const DEFAULT_COMMENTS = [
-  {
-    name: 'Ir. H. Suwarno (Mandor Senior)',
-    status: 'hadir',
-    pax: '4 Orang',
-    time: 'Kemarin, 19.30 WIB',
-    message: 'Bismillah, atas nama keluarga siap hadir di Gubuk Marawati Pacet. Semoga momentum refleksi ini semakin merekatkan fondasi persaudaraan dan keilmuan keluarga besar Do\'a 6.'
-  },
-  {
-    name: 'Hendra, S.T. (Fabrikasi & Pengelasan)',
-    status: 'hadir',
-    pax: '2 Orang',
-    time: 'Kemarin, 20.45 WIB',
-    message: 'Pop Mie 2 dus sudah masuk bagasi logistik! Siap pindah tidur dan menikmati malam sejuk Pacet bersama seluruh sarjana dan keluarga tercinta.'
-  },
-  {
-    name: 'Rini, S.E. (Manajemen & Keuangan)',
-    status: 'hadir',
-    pax: '3 Orang',
-    time: 'Hari ini, 08.15 WIB',
-    message: 'Anak-anak sudah siap dengan pakaian hangat dan sandal outdoor. Sampai bertemu di bumi perkemahan Gubuk Marawati bapak-ibu sekalian!'
-  },
-  {
-    name: 'Joko, S.Pd. (Perwakilan Keluarga)',
-    status: 'hadir',
-    pax: '3 Orang',
-    time: 'Hari ini, 09.00 WIB',
-    message: 'Jadwal kerja sudah aman terkendali. Siap kumpul akbar, refleksi keluarga, dan menikmati segarnya gemercik sungai Pacet!'
-  }
-];
-
 function initRSVP() {
   const form = document.getElementById('fest-rsvp-form');
   const streamEl = document.getElementById('fest-guestbook-stream');
@@ -439,10 +408,30 @@ function initRSVP() {
 
   if (!streamEl) return;
 
-  let comments = JSON.parse(localStorage.getItem('doa6_exec_guestbook_v3')) || DEFAULT_COMMENTS;
+  // Bersihkan data dummy lama bila ada, mulai dari data murni user
+  // Simpan pada key baru doa6_guestbook_pure
+  let comments = JSON.parse(localStorage.getItem('doa6_guestbook_pure')) || [];
 
   function renderComments() {
     streamEl.innerHTML = '';
+
+    // Jika belum ada pesan, tampilkan Empty State yang bersih & berwibawa
+    if (comments.length === 0) {
+      streamEl.innerHTML = `
+        <div class="guestbook-empty-state text-center py-4 px-3">
+          <div class="mb-3 fs-1 text-gold opacity-75">
+            <i class="bi bi-chat-square-quote"></i>
+          </div>
+          <h5 class="font-title text-white mb-2 fs-6">Belum Ada Pesan Kehormatan</h5>
+          <p class="small text-secondary mb-0" style="max-width: 340px; margin: 0 auto; line-height: 1.6;">
+            Jadilah yang pertama menyampaikan konfirmasi kehadiran dan doa restu untuk seluruh civitas keluarga besar.
+          </p>
+        </div>
+      `;
+      if (totalCountEl) totalCountEl.textContent = '0 Konfirmasi';
+      return;
+    }
+
     comments.forEach(c => {
       const card = document.createElement('div');
       card.className = 'guestbook-exec-card';
@@ -451,13 +440,13 @@ function initRSVP() {
       if (c.status === 'hadir') {
         pill = `<span class="guest-pill-exec pill-hadir"><i class="bi bi-check-circle-fill me-1"></i>Pasti Hadir (${c.pax || '1'})</span>`;
       } else if (c.status === 'ragu') {
-        pill = `<span class="guest-pill-exec pill-ragu"><i class="bi bi-question-circle-fill me-1"></i>Masih Menyesuaikan Jadwal</span>`;
+        pill = `<span class="guest-pill-exec pill-ragu"><i class="bi bi-question-circle-fill me-1"></i>Menyesuaikan Jadwal</span>`;
       } else {
         pill = `<span class="guest-pill-exec pill-tidak"><i class="bi bi-x-circle-fill me-1"></i>Berhalangan Hadir</span>`;
       }
 
       card.innerHTML = `
-        <div class="d-flex align-items-center justify-content-between mb-2">
+        <div class="d-flex align-items-center justify-content-between mb-2 flex-wrap gap-1">
           <strong class="font-title text-white fs-6"><i class="bi bi-award-fill text-gold me-2"></i>${escapeHtml(c.name)}</strong>
           <span class="text-secondary small font-monospace">${c.time}</span>
         </div>
@@ -487,16 +476,21 @@ function initRSVP() {
         return;
       }
 
+      const now = new Date();
+      const timeStr = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' }) + ', ' + 
+                      String(now.getHours()).padStart(2, '0') + '.' + 
+                      String(now.getMinutes()).padStart(2, '0') + ' WIB';
+
       const newC = {
         name: name,
         status: status,
         pax: `${pax} Orang`,
-        time: 'Baru saja',
+        time: timeStr,
         message: msg
       };
 
       comments.unshift(newC);
-      localStorage.setItem('doa6_exec_guestbook_v3', JSON.stringify(comments));
+      localStorage.setItem('doa6_guestbook_pure', JSON.stringify(comments));
       renderComments();
 
       // Gold Confetti
@@ -513,7 +507,7 @@ function initRSVP() {
       }
 
       document.getElementById('rsvp-message').value = '';
-      alert('🏛️ Terima kasih! Konfirmasi kehormatan Anda berhasil dicatat. Sampai jumpa di Gubuk Marawati Pacet!');
+      alert('🏛️ Terima kasih! Konfirmasi kehormatan Anda berhasil dicatat.');
     });
   }
 }

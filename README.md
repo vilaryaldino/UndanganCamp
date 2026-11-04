@@ -1,7 +1,7 @@
 # 🏛️ DO'A 6 EXECUTIVE CAMPING RETREAT 2026
 ### Edisi Kehormatan Keluarga Besar Bengkel Las Do'a 6 (Sarjana Edition)
 
-Website undangan eksklusif dan gagah bertema **Executive Modern Luxury Outdoor Retreat**. Didesain dengan nuansa berwibawa, berkelas, dan maskulin-modern untuk keluarga besar Bengkel Las Do'a 6 yang sarjana dan berpendidikan tinggi.
+Website undangan eksklusif dan gagah bertema **Executive Modern Luxury Outdoor Retreat**. Didesain dengan nuansa berwibawa, berkelas, maskulin-modern, dan **100% responsif di mode HP (mobile)** untuk keluarga besar Bengkel Las Do'a 6.
 
 ---
 
@@ -19,38 +19,27 @@ Website undangan eksklusif dan gagah bertema **Executive Modern Luxury Outdoor R
 
 ---
 
-## 🌟 Sentuhan Desain Gagah & Sarjana
+## 📱 Optimalisasi Khusus Mode HP (Mobile Responsive)
 
-1. **Aset Visual & Palet Warna Berwibawa**:
-   - Warna *Obsidian Dark (`#0a110e`)*, *Deep Emerald Forest (`#101a16`)*, berpadu dengan aksen *Burnished Gold (`#d4af37`)* dan *Steel Light (`#e2e8f0`)*.
-   - Tipografi elegan kombinasi font serif terhormat [`Cinzel`](https://fonts.google.com/specimen/Cinzel), font arsitektural [`Outfit`](https://fonts.google.com/specimen/Outfit), dan [`Plus Jakarta Sans`](https://fonts.google.com/specimen/Plus+Jakarta+Sans).
-2. **Cover "Surat Kehormatan Eksekutif"**:
-   - Monogram lambang segel emas **D6**, aksen sudut emas, dan tombol emas yang memicu hujan kembang api *Gold Confetti*.
-3. **Mini Game Cerdas: "Peran Kehormatan di Pacet"**:
-   - Gelar-gelar humoris berbobot:
-     - 🎓 *Doktor Filosofi Pop Mie*
-     - 🏛️ *Profesor Pindah Tidur*
-     - ⚖️ *Magister Refleksi & Orator Keluarga*
-     - 🧭 *Komandan Ekspedisi Sungai Pacet*
-     - 📷 *Direktur Sinematografi & Arsiparis*
-     - 🛡️ *Insinyur Ketahanan Tenda*
-     - 🏆 *Ketua Dewan Doorprize & Diplomasi*
-4. **Countdown Timer Presisi**:
-   - Tampilan hitung mundur ala arloji presisi mewah menuju 7 November 2026.
-5. **Checklist Logistik Ekspedisi**:
-   - Indikator progres dengan bar gradasi emas dan penyimpanan otomatis di *localStorage*.
-6. **RSVP & Dinding Ucapan Civitas**:
-   - Formulir gelap mewah dengan border emas dan integrasi pesan instan WhatsApp.
+1. **Ukuran Layar Sentuh Presisi**:
+   - Skalasi judul cairan (*fluid typography clamp*) yang menyesuaikan otomatis dengan layar smartphone mulai dari 360px hingga layar lebar tanpa pemotongan teks.
+   - Tombol-tombol berukuran minimal 48px ramah sentuhan ibu jari (*thumb-friendly*).
+   - Ukuran font input form 16px untuk mencegah efek *auto-zoom* yang mengganggu pada browser Safari iOS / Android Chrome.
+2. **Penataan Floating Audio & Navigation Dock**:
+   - Tombol pemutar audio ditempatkan tepat di atas floating dock agar tidak saling tumpuk di layar HP.
+   - Padding bagian bawah body menjamin seluruh tombol aksi dan footer tetap terbaca leluasa.
+3. **Pesan Kehormatan Bersih dari Data Dummy**:
+   - Dinding pesan kehormatan kini bersih dari data contoh (dummy) dan menampilkan *Empty State* yang elegan sampai tamu kehormatan mengirimkan ucapan secara riil.
 
 ---
 
 ## 🚀 Cara Akses
 
-Buka browser dan akses:
+Buka browser di PC maupun smartphone Anda:
 ```
 http://localhost/Undangan_Website/
 ```
-Atau dengan parameter nama gelar tamu:
+Atau dengan parameter nama tamu kehormatan:
 ```
 http://localhost/Undangan_Website/?to=Hendra,+S.T.+%26+Keluarga
 ```
